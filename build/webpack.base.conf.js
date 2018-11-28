@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const package = require('../package')
 
 const isProd = process.env.NODE_ENV === 'production'
 function resolve (dir) {
@@ -13,10 +14,10 @@ const webpackConfig = {
   mode: isProd ? 'production' : 'development',
   devtool: isProd ? '' : 'source-map',
   entry: {
-      index: resolve('src/core/index/clip/index.js')
+      index: resolve('src/core/clip/index.js')
   },
   output: {
-      filename: subPath('js/[name].[hash:8].js'),
+      filename: subPath('./'+package.name+'.min.js'),
       path: resolve('dist')
   },
   resolve: {
